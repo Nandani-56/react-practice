@@ -20,9 +20,9 @@ const FetchPractice = () => {
   }, []);
 
   // show dynamic data
-  console.log("sds", categoryData.data);
   return (
     <div>
+      <h4>Fetch API using useEffect</h4>
       {categoryData.map((category) => {
         return <h3>{category.categoryName}</h3>;
       })}

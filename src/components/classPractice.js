@@ -24,7 +24,10 @@ export default class ClassTodo extends Component {
 
     // console.log(this.state.todoList.length);
     // console.log(this.state.todoList);
-    this.setState({ todoList: [...this.state.todoList, task] });
+    if (this.state.task.name !== "") {
+      this.setState({ todoList: [...this.state.todoList, task] });
+      this.setState({ task: "" });
+    }
   }
 
   deleteTask(id) {
@@ -41,7 +44,10 @@ export default class ClassTodo extends Component {
       <div style={{ textAlign: "center" }} className="mt-5">
         <h1>Todo List using Class Component</h1>
         <div className="mt-5">
-          <input onBlur={(e) => this.handleInputChange(e)} />
+          <input
+            onChange={(e) => this.handleInputChange(e)}
+            value={this.state.task}
+          />
           <button
             onClick={() => this.addTask()}
             className="ms-4 btn btn-primary"
