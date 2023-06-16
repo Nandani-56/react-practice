@@ -3,12 +3,16 @@ import Col from "react-bootstrap/Col";
 
 const Card = (props) => {
   const { userId, title, body } = props;
-  const { postData, setPostData } = useState("");
+  const postDataa = "";
+  const [postData, setPostData] = useState(postDataa);
+  const [isPostVisible, setIsPostVisible] = useState(false);
+
   const seeUserPost = (data) => {
     let newData = data.body;
-    console.log(newData.length);
-    // setPostData(newData);
+    isPostVisible === false ? setPostData(newData) : setPostData(postDataa);
+    setIsPostVisible(!isPostVisible);
   };
+
   // console.log(postData.length);
   return (
     <Col
@@ -22,11 +26,10 @@ const Card = (props) => {
     >
       <h5>UserId : {userId}</h5>
       <p>Title : {title}</p>
-      {/* <p>Post: {postData}</p> */}
+      <p>Post: {postData}</p>
       <button className="btn btn-primary" onClick={() => seeUserPost({ body })}>
-        See Post
+        {isPostVisible === false ? "See Post" : "Hide Post"}
       </button>
-      {/* <p> {postData.length > 0 ? "true" : " false"}</p> */}
     </Col>
   );
 };
