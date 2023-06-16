@@ -35,7 +35,7 @@ const Home = () => {
         <br />
         <li className="btn btn-primary mt-5">
           <Link
-            to="/useCallbackExample"
+            to="/fetchExample"
             style={{ color: "white", textDecoration: "none" }}
           >
             Fetch Api Using useEffect Example

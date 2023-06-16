@@ -3,7 +3,7 @@ import ClassTodo from "./components/classPractice";
 import FetchPractice from "./components/fetch";
 import Task from "./components/task";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./home";
+import Home from "./components/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainPage from "./components/mainpage";
 import UseCallBackExample from "./components/useCallbackExample";

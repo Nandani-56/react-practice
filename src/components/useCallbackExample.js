@@ -7,14 +7,21 @@ const UseCallBackExample = () => {
   const [age, setAge] = useState(10);
   const [salary, setSalary] = useState(1000);
 
-  const incrementAge = useCallback(() => {
-    setAge((age) => age + 1);
-  }, [age]);
+  // const incrementAge = useCallback(() => {
+  //   setAge((age) => age + 1);
+  // }, [age]);
 
-  const incrementSalary = useCallback(() => {
+  // const incrementSalary = useCallback(() => {
+  //   setSalary((salary) => salary + 1000);
+  // }, [salary]);
+
+  const incrementSalary = () => {
     setSalary((salary) => salary + 1000);
-  }, [salary]);
+  };
 
+  const incrementAge = () => {
+    setAge((age) => age + 10);
+  };
   return (
     <div>
       <Title />

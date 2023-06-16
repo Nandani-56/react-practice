@@ -1,31 +1,38 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Card from "./card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const FetchPractice = () => {
-  const [categoryData, setCategoryData] = useState([]);
-  // fetch api using fetch
-  // fetch(`http://localhost:3001/category-list/getCategory/1?order=asc`)
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data));
+  const [postData, setPostData] = useState([]);
+  const getDataFromDB = async () => {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts`
+    );
 
-  // fetch api using axios
+    let data = response.data;
+    setPostData(data);
+  };
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/category-list/getCategory/1?order=asc`)
-      .then((res) => {
-        console.log(res.data);
-        const data = res.data.data;
-        setCategoryData(data);
-      });
+    getDataFromDB();
   }, []);
 
+  // console.log(postData);
   // show dynamic data
   return (
     <div>
-      <h4>Fetch API using useEffect</h4>
-      {categoryData.map((category) => {
-        return <h3>{category.categoryName}</h3>;
-      })}
+      <h4>Fetch API using useEffect </h4>
+      <Container>
+        <Row md={5} style={{ justifyContent: "center" }}>
+          {postData.map((post) => {
+            return (
+              <Card userId={post.userId} title={post.title} body={post.body} />
+            );
+          })}
+        </Row>
+      </Container>
     </div>
   );
 };
